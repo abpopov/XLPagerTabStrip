@@ -351,10 +351,18 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    
+    
     if (self.cachedCellWidths.count > indexPath.row)
     {
         NSNumber *cellWidthValue = self.cachedCellWidths[indexPath.row];
         CGFloat cellWidth = [cellWidthValue floatValue];
+        if(self.buttonBarView.tabWidth>0){
+            return CGSizeMake(self.buttonBarView.tabWidth, collectionView.frame.size.height);
+        }
+        
         return CGSizeMake(cellWidth, collectionView.frame.size.height);
     }
     return CGSizeZero;
